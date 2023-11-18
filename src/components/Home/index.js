@@ -2,7 +2,7 @@ import { Component } from "react";
 import Header from "../Header";
 import Tabs from "../Tabs";
 import CategoryItems from "../CategoryItems";
-
+import CartContext from "../ReactContext/Context";
 import "./index.css";
 
 class Home extends Component {
@@ -30,10 +30,10 @@ class Home extends Component {
       dishId: each.dish_id,
       dishName: each.dish_name,
       dishPrice: each.dish_price,
-      nextUrl: each.nextUrl,
+      nextUrl: each.nexturl,
       dishImage: each.dish_image,
       addonCat: each.addonCat,
-      dishQuantity: 0,
+      dishQuantity: 1,
     });
 
     const tableMenuListFunction = (each) => ({
@@ -43,7 +43,7 @@ class Home extends Component {
       menuCategory: each.menu_category,
       menuCategoryId: each.menu_category_id,
       menuCategoryImage: each.menu_category_image,
-      nextUrl: each.nextUrl,
+      nextUrl: each.nexturl,
     });
 
     const newTableMenuList = tableMenuList.map((each) =>
@@ -71,6 +71,13 @@ class Home extends Component {
       };
       console.log("new data", newData);
 
+      <CartContext.Consumer>
+        {(value) => {
+          const { updateTitle } = value;
+          const { restaurantName } = newData;
+          updateTitle(restaurantName);
+        }}
+      </CartContext.Consumer>;
       this.setState({
         restrauntData: newData,
       });
@@ -154,11 +161,19 @@ class Home extends Component {
     const { restaurantName, tableMenuList } = restrauntData;
 
     return (
-      <div>
-        <Header restaurantName={restaurantName} cartSize={cartSize} />
-        {this.renderTabs()}
-        {this.renderCategoryItems(tableMenuList)}
-      </div>
+      <CartContext.Consumer>
+        {(value) => {
+          const { updateTitle } = value;
+          updateTitle(restaurantName);
+          return (
+            <div>
+              <Header restaurantName={restaurantName} />
+              {this.renderTabs()}
+              {this.renderCategoryItems(tableMenuList)}
+            </div>
+          );
+        }}
+      </CartContext.Consumer>
     );
   }
 }

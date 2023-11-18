@@ -67,7 +67,7 @@ class Login extends Component {
     const { ErrorMsg, usernameInput, passwordInput } = this.state;
     return (
       <div className="bg-container">
-        <form className="form-container" onClick={this.onClickLogin}>
+        <form className="form-container">
           <h1>UNI Resto Cafe</h1>
           <div className="username-container">
             <label htmlFor="username" className="username-label">
@@ -95,7 +95,11 @@ class Login extends Component {
               onChange={this.onChangePassword}
             />
           </div>
-          <button type="submit" className="login-btn">
+          <button
+            type="submit"
+            className="login-btn"
+            onClick={this.onClickLogin}
+          >
             Login
           </button>
           <p className="error-msg">{ErrorMsg}</p>
