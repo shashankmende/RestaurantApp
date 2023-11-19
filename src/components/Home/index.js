@@ -4,6 +4,8 @@ import Tabs from "../Tabs";
 import CategoryItems from "../CategoryItems";
 import CartContext from "../ReactContext/Context";
 import "./index.css";
+import Cookies from "js-cookie";
+import { Redirect } from "react-router-dom";
 
 class Home extends Component {
   state = { restrauntData: "", activeTabId: "11" };
@@ -78,6 +80,10 @@ class Home extends Component {
   };
 
   renderTabs = () => {
+    const jwtToken = Cookies.get("jwt_token");
+    if (jwtToken === undefined) {
+      <Redirect to="/login" />;
+    }
     const { restrauntData, activeTabId } = this.state;
     const { tableMenuList } = restrauntData;
     console.log("tablemenu list from function", tableMenuList);

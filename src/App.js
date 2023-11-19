@@ -4,6 +4,7 @@ import { Component } from "react";
 import Login from "./components/Login";
 import CartContext from "./components/ReactContext/Context";
 import Cart from "./components/Cart";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 class App extends Component {
   state = { cartList: [], title: "" };
@@ -110,8 +111,8 @@ class App extends Component {
           <BrowserRouter>
             <Switch>
               <Route exact path="/login" component={Login} />
-              <Route exact path="/" component={Home} />
-              <Route exact path="/cart" component={Cart} />
+              <ProtectedRoute exact path="/" component={Home} />
+              <ProtectedRoute exact path="/cart" component={Cart} />
             </Switch>
           </BrowserRouter>
         </CartContext.Provider>

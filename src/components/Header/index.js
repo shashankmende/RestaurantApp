@@ -1,7 +1,8 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./index.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import CartContext from "../ReactContext/Context";
+import Cookies from "js-cookie";
 
 const Header = (props) => {
   const { restaurantName } = props;
@@ -9,6 +10,13 @@ const Header = (props) => {
     <CartContext.Consumer>
       {(value) => {
         const { cartList } = value;
+
+        const onClickLogout = () => {
+          Cookies.remove("jwt_token");
+          const { history } = props;
+          history.replace("/login");
+        };
+
         return (
           <div className="header-container">
             <Link to="/">
@@ -21,11 +29,10 @@ const Header = (props) => {
                 <AiOutlineShoppingCart size={40} />
               </Link>
               <p className="cart_count">{cartList.length}</p>
-              <Link to="/login">
-                <button className="logout" type="button">
-                  Logout
-                </button>
-              </Link>
+
+              <button className="logout" type="button" onClick={onClickLogout}>
+                Logout
+              </button>
             </div>
           </div>
         );
@@ -34,4 +41,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
