@@ -18,24 +18,26 @@ const Cart = () => (
         <>
           <Header restaurantName={"UNI Resto Cafe"} />
           <div className="cart-container">
-            <div className="cart-header">
-              <h1>My Cart</h1>
-              <button
-                type="button"
-                className="remove-all-btn"
-                onClick={onClickRemoveAll}
-              >
-                Remove All
-              </button>
-            </div>
             {cartList.length === 0 ? (
               <Empty />
             ) : (
-              cartList.map((each) => (
+              <>
+                <div className="cart-header">
+                  <h1>My Cart</h1>
+                  <button
+                    type="button"
+                    className="remove-all-btn"
+                    onClick={onClickRemoveAll}
+                  >
+                    Remove All
+                  </button>
+                </div>
                 <ul className="unordered-list">
-                  <CartItem key={each.dishId} dish={each} />
+                  {cartList.map((each) => (
+                    <CartItem key={each.dishId} dish={each} />
+                  ))}
                 </ul>
-              ))
+              </>
             )}
           </div>
         </>

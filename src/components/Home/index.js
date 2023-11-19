@@ -6,7 +6,7 @@ import CartContext from "../ReactContext/Context";
 import "./index.css";
 
 class Home extends Component {
-  state = { restrauntData: "", activeTabId: "11", cartSize: 0 };
+  state = { restrauntData: "", activeTabId: "11" };
 
   componentDidMount() {
     this.getData();
@@ -71,13 +71,6 @@ class Home extends Component {
       };
       console.log("new data", newData);
 
-      <CartContext.Consumer>
-        {(value) => {
-          const { updateTitle } = value;
-          const { restaurantName } = newData;
-          updateTitle(restaurantName);
-        }}
-      </CartContext.Consumer>;
       this.setState({
         restrauntData: newData,
       });
@@ -161,19 +154,11 @@ class Home extends Component {
     const { restaurantName, tableMenuList } = restrauntData;
 
     return (
-      <CartContext.Consumer>
-        {(value) => {
-          const { updateTitle } = value;
-          updateTitle(restaurantName);
-          return (
-            <div>
-              <Header restaurantName={restaurantName} />
-              {this.renderTabs()}
-              {this.renderCategoryItems(tableMenuList)}
-            </div>
-          );
-        }}
-      </CartContext.Consumer>
+      <div>
+        <Header restaurantName={restaurantName} />
+        {this.renderTabs()}
+        {this.renderCategoryItems(tableMenuList)}
+      </div>
     );
   }
 }
