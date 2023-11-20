@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./index.css";
-import CartContext from "../ReactContext/Context";
+import CartContext from "../../ReactContext/Context";
 
 class CategoryItems extends Component {
   state = { categoryProps: this.props };

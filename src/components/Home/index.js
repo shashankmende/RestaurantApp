@@ -2,7 +2,7 @@ import { Component } from "react";
 import Header from "../Header";
 import Tabs from "../Tabs";
 import CategoryItems from "../CategoryItems";
-import CartContext from "../ReactContext/Context";
+import CartContext from "../../ReactContext/Context";
 import "./index.css";
 import Cookies from "js-cookie";
 import { Redirect } from "react-router-dom";

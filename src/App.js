@@ -1,8 +1,10 @@
+import { Component } from "react";
+
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
-import { Component } from "react";
+
 import Login from "./components/Login";
-import CartContext from "./components/ReactContext/Context";
+import CartContext from "./ReactContext/Context";
 import Cart from "./components/Cart";
 import ProtectedRoute from "./components/ProtectedRoute";
 

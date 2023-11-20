@@ -1,8 +1,8 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./index.css";
-import { Link, withRouter } from "react-router-dom";
-import CartContext from "../ReactContext/Context";
 import Cookies from "js-cookie";
+import { Link, withRouter } from "react-router-dom";
+import CartContext from "../../ReactContext/Context";
 
 const Header = (props) => {
   const { restaurantName } = props;

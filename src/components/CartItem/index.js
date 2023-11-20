@@ -1,6 +1,7 @@
 import "./index.css";
 import { AiFillCloseCircle } from "react-icons/ai";
-import CartContext from "../ReactContext/Context";
+
+import CartContext from "../../ReactContext/Context";
 
 const CartItem = (props) => {
   const { dish } = props;
@@ -30,7 +31,7 @@ const CartItem = (props) => {
         return (
           <li className="cart-item">
             <div className="name-image-container">
-              <img src={dishImage} alt="dish-image" className="cart-image" />
+              <img src={dishImage} alt="dish" className="cart-image" />
               <h3>{dishName}</h3>
             </div>
             <div className="quantity-container">

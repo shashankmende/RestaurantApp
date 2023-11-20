@@ -1,6 +1,6 @@
 import "./index.css";
 
-import CartContext from "../ReactContext/Context";
+import CartContext from "../../ReactContext/Context";
 import Header from "../Header";
 import Empty from "../EmptyView";
 import CartItem from "../CartItem";
@@ -16,7 +16,7 @@ const Cart = () => (
 
       return (
         <>
-          <Header restaurantName={"UNI Resto Cafe"} />
+          <Header restaurantName="UNI Resto Cafe" />
           <div className="cart-container">
             {cartList.length === 0 ? (
               <Empty />
